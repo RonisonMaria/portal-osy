@@ -1,0 +1,38 @@
+@charset "utf-8";
+
+body{
+	background-color: #F6F7EB;
+	font-size: 12px;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	margin: 20px;
+}
+
+h1{
+	font-size: 18px;
+	font-weight: bolder;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: #517A85 !important;
+}
+
+.teste{
+	color: #F6F7EB;
+}
+
+.ui-button-text{
+	
+  background-color: #B1E1DF;
+  border: none;
+  color: #517A85;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+}
+
+.panel{
+	background-color:#517A85;
+	border: none;
+}
+
+
