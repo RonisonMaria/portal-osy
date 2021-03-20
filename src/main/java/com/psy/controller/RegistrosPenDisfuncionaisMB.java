@@ -1,5 +1,4 @@
 package com.psy.controller;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,38 +8,32 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import com.psy.model.RPD;
+import com.psy.model.RegistrosPenDisfuncionais;
 
 import lombok.Getter;
 import lombok.Setter;
 
-@Named("beanRPD")
+@Named("RegistrosPenDisfuncionaisMB")
 @SessionScoped
-public class rpdMB implements Serializable {
+public class RegistrosPenDisfuncionaisMB implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Getter
-	@Setter
-	@Inject
-	private RPD rpd;
+	@Setter	
+	private RegistrosPenDisfuncionais rpd = new RegistrosPenDisfuncionais();
 
 	@Getter
 	@Setter
-	private List<RPD> rpds = new ArrayList<>();
+	private List<RegistrosPenDisfuncionais> rpds = new ArrayList<>();
 
-	public String adicionar() {
+	public void adicionar() {
 		rpds.add(rpd);
-		clean();
-		return null;
-
+		cleanRpd();	
 	}
 
-	private void clean() {
-		rpd = new RPD();
+	private void cleanRpd() {
+		rpd = new RegistrosPenDisfuncionais();
 	}
 
 }
