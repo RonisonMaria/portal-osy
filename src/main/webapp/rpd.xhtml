@@ -34,7 +34,7 @@
 						styleClass="teste">
 						<p:inputTextarea id="situacao" required="true"
 							requiredMessage="Campo situação é necessário!"
-							value="#{beanRPD.rpd.situacao}" rows="6" style="width: 100%"
+							value="#{RegistrosPenDisfuncionaisMB.rpd.situacao}" rows="6" style="width: 100%"
 							maxlength="300" placeholder="#{text['rpd.placeholder.situacao']}" />
 					</p:outputLabel>
 				</div>
@@ -43,7 +43,7 @@
 						styleClass="teste">
 						<p:inputTextarea id="pa" required="true"
 							requiredMessage="É necessário prenceher o campo PA"
-							value="#{beanRPD.rpd.pa}" rows="6" style="width: 100%"
+							value="#{RegistrosPenDisfuncionaisMB.rpd.pa}" rows="6" style="width: 100%"
 							maxlength="100"
 							placeholder="#{text['rpd.placeholder.pensamentosAut']}" />
 					</p:outputLabel>
@@ -53,7 +53,7 @@
 						styleClass="teste">
 						<p:inputTextarea id="emocao" required="true"
 							requiredMessage="É necessário prenceher o campo Emoção"
-							value="#{beanRPD.rpd.emocao}" rows="6" style="width: 100%"
+							value="#{RegistrosPenDisfuncionaisMB.rpd.emocao}" rows="6" style="width: 100%"
 							maxlength="50" placeholder="#{text['rpd.placeholder.emocao']}" />
 					</p:outputLabel>
 				</div>
@@ -63,7 +63,7 @@
 						styleClass="teste">
 						<p:inputTextarea id="comportamento" required="true"
 							requiredMessage="É necessário prenceher o campo Comportamento"
-							value="#{beanRPD.rpd.comportamento}" rows="6" style="width: 100%"
+							value="#{RegistrosPenDisfuncionaisMB.rpd.comportamento}" rows="6" style="width: 100%"
 							maxlength="300"
 							placeholder="#{text['rpd.placeholder.comportamento']}" />
 					</p:outputLabel>
@@ -71,36 +71,37 @@
 				<div class="ui-g-12 ui-md-6 ui-lg-3">
 
 
-					<h:panelGrid columns="3" cellpadding="5">
-
-						<p:outputLabel for="dateTimeDe" value="Data:" />
-						<p:calendar id="dateTimeDe" value="#{calendarView.dateTimeDe}"
-							locale="br" pattern="dd/MM/yyyy HH:mm" />
-
+					<h:panelGrid columns="3" cellpadding="5">					
+						
+						<p:outputLabel for="dataRegistro" value="Data:"/>
+                        <p:calendar id="dataRegistro" label="data" locale="pt_BR" mask="true"
+                        value="#{RegistrosPenDisfuncionaisMB.rpd.data}"
+                        required="true" pattern="dd/MM/yyyy HH:mm" showOn="button"
+                        size="15"/>						
+						
 						<p:commandButton value="#{text['btn.adicionar']}"
-							action="#{beanRPD.adicionar}" styleClass="ui-button"
+							action="#{RegistrosPenDisfuncionaisMB.adicionar}" styleClass="ui-button"
 							update="form tabelaRPD msg" />
 
-					</h:panelGrid>
+					</h:panelGrid> 
 				</div>
 			</div>
-
 
 		</p:panel>
 
 	</h:form>
 
 	<h1>Lista de Ocorrências</h1>
-	<p:dataTable value="#{beanRPD.rpds}" var="varrpd" id="tabelaRPD">
-		<!-- <p:column headerText="#{text['rpd.label.dataHora']}" width="150">
-		calendarView.dateTimeDe   ===> Subistituir data rpd.java onde deve receber um data -->
-			<!-- <h:outputText value="#{varrpd.dateTimeDe}">
+	<p:dataTable value="#{RegistrosPenDisfuncionaisMB.rpds}" var="varrpd" id="tabelaRPD">
+		 <p:column headerText="#{text['rpd.label.dataHora']}" width="150">
+		<!--  calendarView.dateTimeDe   ===> Subistituir data rpd.java onde deve receber um data -->
+			<h:outputText value="#{varrpd.data}">
 				<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
 			</h:outputText> 
 			
-		</p:column>-->
-		 <p:column headerText="#{text['rpd.label.dataHora']}" width="150">#{varrpd.dateAndHorus}</p:column>
-		<p:column headerText="#{text['rpd.label.situacao']}">#{varrpd.situacao}</p:column>
+		</p:column>
+		<!-- <p:column headerText="#{text['rpd.label.dataHora']}" width="150">#{varrpd.dateAndHorus}</p:column> --> 
+		<p:column width="30px" headerText="#{text['rpd.label.situacao']}">#{varrpd.situacao}</p:column>
 		<p:column headerText="#{text['rpd.label.pensamentosAut']}">#{varrpd.pa}</p:column>
 		<p:column headerText="#{text['rpd.label.emocao']}">#{varrpd.emocao}</p:column>
 		<p:column headerText="#{text['rpd.label.comportamento']}">#{varrpd.comportamento}</p:column>
@@ -108,48 +109,5 @@
 			<h:button value="#{text['btn.editar']}" />
 		</p:column>
 	</p:dataTable>
-
-
-
-	<script type="text/javascript">
-		PrimeFaces.locales['de'] = {
-			closeText : 'Schließen',
-			prevText : 'Zurück',
-			nextText : 'Weiter',
-			monthNames : [ 'Januar', 'Februar', 'März', 'April', 'Mai', 'Juni',
-					'Juli', 'August', 'September', 'Oktober', 'November',
-					'Dezember' ],
-			monthNamesShort : [ 'Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun',
-					'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez' ],
-			dayNames : [ 'Sonntag', 'Montag', 'Dienstag', 'Mittwoch',
-					'Donnerstag', 'Freitag', 'Samstag' ],
-			dayNamesShort : [ 'Son', 'Mon', 'Die', 'Mit', 'Don', 'Fre', 'Sam' ],
-			dayNamesMin : [ 'S', 'M', 'D', 'M ', 'D', 'F ', 'S' ],
-			weekHeader : 'Woche',
-			firstDay : 1,
-			isRTL : false,
-			showMonthAfterYear : false,
-			yearSuffix : '',
-			timeOnlyTitle : 'Nur Zeit',
-			timeText : 'Zeit',
-			hourText : 'Stunde',
-			minuteText : 'Minute',
-			secondText : 'Sekunde',
-			currentText : 'Aktuelles Datum',
-			ampm : false,
-			month : 'Monat',
-			week : 'Woche',
-			day : 'Tag',
-			allDayText : 'Ganzer Tag'
-		};
-	</script>
-
-	<style type="text/css">
-.value {
-	font-weight: bold;
-}
-</style>
-
-
 </h:body>
 </html>
